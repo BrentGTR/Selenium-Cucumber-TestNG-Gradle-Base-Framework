@@ -1,0 +1,112 @@
+plugins {
+    id 'java'
+    id "io.qameta.allure" version "2.8.1"
+}
+
+allure {
+    version = '2.8.1'
+    autoconfigure = false
+    aspectjweaver = true
+}
+
+group 'Test_Automation-automationpractice.com'
+version '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+def versions = [
+        seleniumJava: '4.18.0',
+        seleniumServer: '3.141.5',
+        testNg: '7.9.0',
+        cucumber: '7.15.0',
+        javafaker: '1.0.2',
+        mockneat: '0.4.8',
+        log4jCore: '2.23.1',
+        logbackClassic: '1.5.3',
+        commonsIO: '2.15.1',
+        webdrivermanager: '5.7.0',
+        allureTestNg: '2.25.0',
+        json: '20240303',
+        restAssured: '5.4.0',
+        poi: '4.1.2',
+        poiOoxml: '5.2.5',
+        jodaTime: '2.12.7',
+        cucumberGuice: '7.15.0',
+        guice: '7.0.0',
+        aspectjWeaver: '1.9.21.2',
+        slackApiClient: '1.38.2',
+        shadowDomAutomation: '0.1.5'
+]
+
+dependencies {
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: versions.seleniumJava
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-server', version: versions.seleniumServer
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: versions.cucumber
+    implementation group: 'io.cucumber', name: 'cucumber-testng', version: versions.cucumber
+    implementation group: 'io.cucumber', name: 'cucumber-guice', version: versions.cucumberGuice
+    implementation group: 'com.github.javafaker', name: 'javafaker', version: versions.javafaker
+    implementation 'net.andreinc:mockneat:' + versions.mockneat
+    implementation group: 'commons-io', name: 'commons-io', version: versions.commonsIO
+    implementation group: 'io.qameta.allure', name: 'allure-testng', version: versions.allureTestNg
+    implementation group: 'org.json', name: 'json', version: versions.json
+    implementation group: 'org.apache.poi', name: 'poi', version: versions.poi
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: versions.poiOoxml
+    implementation group: 'joda-time', name: 'joda-time', version: versions.jodaTime
+    implementation group: 'com.google.inject', name: 'guice', version: versions.guice
+    implementation group : 'org.apache.logging.log4j', name: 'log4j-core', version: versions.log4jCore
+    implementation group: 'org.aspectj', name: 'aspectjweaver', version: versions.aspectjWeaver
+    implementation group: 'com.slack.api', name: 'slack-api-client', version: versions.slackApiClient
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: versions.webdrivermanager
+    testImplementation group: 'org.testng', name: 'testng', version: versions.testNg
+    implementation group: 'io.github.sukgu', name: 'automation', version: versions.shadowDomAutomation
+    testImplementation group: 'io.rest-assured', name: 'rest-assured', version: versions.restAssured
+    testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: versions.logbackClassic
+
+    testImplementation 'io.cucumber:cucumber-java:' + versions.cucumber
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+//For Cucumber .feature files
+tasks.register('cucumber') {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'pretty',
+                    '--plugin', 'html:target/cucumber-report/single',
+                    '--plugin', 'json:target/reports/cucumber.json',
+                    '--glue',
+                    'com.steps',
+                    'src/test/resources',
+            ]
+            systemProperties System.properties
+        }
+    }
+}
+
+//For TestNG.xml files
+//If u want to use TestNGRunner you have to disable all suites
+test {
+    ignoreFailures = true
+    useTestNG()
+            {
+                dependsOn cleanTest
+                suites 'src/test/resources/xml_runners/main_runner/TestNG-Runner.xml'
+            }
+    systemProperties System.properties
+}

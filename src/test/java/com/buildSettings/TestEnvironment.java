@@ -39,7 +39,7 @@ public class TestEnvironment {
     protected static Faker faker = new Faker(Locale.US);
     protected static MockNeat mockNeat = MockNeat.secure();
     protected static Logger logger = LoggerFactory.getLogger(Logger.class);
-    protected static final String TODAY_DATE = new SimpleDateFormat("yyyy-MM-dd HH:ss").format(new Date());
+    protected static final String TODAY_DATE = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
     protected static final DecimalFormat DOLLAR_DECIMAL_FORMAT = new DecimalFormat("$#0.00", new DecimalFormatSymbols(Locale.US));
 
     //BUNDLES//
@@ -123,6 +123,7 @@ public class TestEnvironment {
 
     @Attachment(value = "Cucumber scenario FAIL logs", type = "text/plain")
     protected String allureSaveTextLogCucumber(Scenario scenario) {
+        System.out.println("scenario: " + scenario.getName());
         return logBuilder(scenario.getName().toUpperCase());
     }
 

@@ -26,16 +26,17 @@ import java.util.Map;
 public class Freemium_Tests extends WEB_Hooks {
 
     @Story("HAPPY PATH")
-    @Parameters({"website"})
     @Test(description = "Subscribe to Newsletter on Freemium Websites", priority = 0)
+    @Parameters("website")
     public void SubscribeToNewsletter(String website) throws InterruptedException {
+        System.out.println("Website parameter value: " + website);
         //ARRANGE
         final FreemiumPageSteps freemiumPageSteps = new FreemiumPageSteps();
         final AbonnementSteps abonnementSteps = new AbonnementSteps();
         final FreemiumPage freemiumPage = new FreemiumPage();
         final AbonnementPage abonnementPage = new AbonnementPage();
 
-        Map<String, String> formData = getStringStringMap();
+        Map<String, String> formData = getStringStringMap(website);
 
         //ACT
         freemiumPageSteps.iOpenHomePage(website);
@@ -51,15 +52,35 @@ public class Freemium_Tests extends WEB_Hooks {
     }
 
     @NotNull
-    private static Map<String, String> getStringStringMap() {
+    private static Map<String, String> getStringStringMap(String website) {
         Map<String, String> formData = new HashMap<>();
+        String postCode = "";
+        String huisNummer = "";
+        String toevoeging = "";
 
         // Fill the Map with the provided data
         formData.put("Voornaam", faker.name().firstName());
         formData.put("Achternaam", faker.name().lastName());
-        formData.put("Postcode", "5232JL");
-        formData.put("Huisnummer", "7");
-        formData.put("Toevoeging", "");
+        switch (website) {
+            case "www.bd.nl":
+                postCode = "5232JL";
+                huisNummer = "7";
+                toevoeging = "";
+                break;
+            case "www.tubantia.nl", "www.ed.nl":
+                postCode = "7541AZ";
+                huisNummer = "376";
+                toevoeging = "";
+                break;
+            case "www.ad.nl":
+                postCode = "1431HM";
+                huisNummer = "102";
+                toevoeging = "";
+                break;
+        }
+        formData.put("Postcode", postCode);
+        formData.put("Huisnummer", huisNummer);
+        formData.put("Toevoeging", toevoeging);
         formData.put("Telefoonnummer", "0648642540");
         formData.put("E-mailadres", "<emailAddress>");
         formData.put("Wachtwoord", "wachtwoord");

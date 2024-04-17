@@ -98,7 +98,10 @@ Right now it's only available for a local host, and **it's POC feature**, howeve
 1. Run SeleniumGridRunner
 2. Make sure that SeleniumGrid is running properly, check http://localhost:4444/grid/console
 3. In terminal type `./gradlew test -Dtests.executor=grid -Dremote.browser="YOUR_REMOTE_BROWSER"`
+### TO DO
+1. Add Jenkins CI
 ## AUTHORS
 - **Kamil Nowocin** - *Initial work* - [Kamil Nowocin](https://github.com/kamil-nowocin)
+- **Brent Singh** - *DPG Work* - [Brent Singh](https://github.com/BrentGTR)
 ## LICENSE
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

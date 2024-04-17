@@ -44,7 +44,7 @@ public class WEB_Hooks extends DriverFactory implements ITestListener {
     @AfterMethod(alwaysRun = true, description = "Teardown Test Class")
     public void afterTest() {
         MDC.remove("testid");
-        getDriver().close();
+        getDriver().quit();
     }
 
     @AfterSuite(alwaysRun = true, description = "Teardown Test Suite")

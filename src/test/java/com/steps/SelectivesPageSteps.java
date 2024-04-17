@@ -3,15 +3,17 @@ package com.steps;
 import com.DriverFactory;
 import com.buildSettings.TestCommons;
 import com.buildSettings.TestEnvironment;
-import com.pages.AbonnementPage;
-import com.pages.FreemiumPage;
 import com.pages.SelectivesPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
+import org.testng.collections.Lists;
+
+import java.util.List;
 
 public class SelectivesPageSteps extends TestEnvironment {
 
@@ -26,10 +28,14 @@ public class SelectivesPageSteps extends TestEnvironment {
     public void iOpenTheSelectivesHomePage(String website) throws InterruptedException {
         //ARRANGE
         final String expectedPageURL = selectivesPage.getWebsiteURL(website);
+        driver.get("https://" + website);
 
         //ACT
-        DriverFactory.getDriver().get("https://" + website);
-        testCommons.customClick(selectivesPage.acceptAllCookiesButton); //TODO: Fix this
+        testCommons.waitForElementToBeVisible(selectivesPage.iframeElement);
+        driver.switchTo().frame(selectivesPage.iframeElement);
+        testCommons.customClick(selectivesPage.acceptAllCookiesButton);
+        // Switch back to the default content
+        driver.switchTo().defaultContent();
 
         //ASSERT
         Thread.sleep(2000); //Wait for page to load completely
@@ -42,6 +48,10 @@ public class SelectivesPageSteps extends TestEnvironment {
     @When("I click on the Selectives abonneren {string} button")
     public void iClickOnTheSelctivesAbonnerenButton(String arg0) {
         testCommons.customClick(selectivesPage.abonnerenButton);
+
+        // Switch to second tab
+        List<String> browserTabs = Lists.newArrayList(driver.getWindowHandles());
+        driver.switchTo().window(browserTabs.get(1));
     }
 
 

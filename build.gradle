@@ -43,7 +43,8 @@ def versions = [
         guice: '7.0.0',
         aspectjWeaver: '1.9.21.2',
         slackApiClient: '1.38.2',
-        shadowDomAutomation: '0.1.5'
+        shadowDomAutomation: '0.1.5',
+        wireMock: '3.5.2'
 ]
 
 dependencies {
@@ -65,12 +66,12 @@ dependencies {
     implementation group: 'org.aspectj', name: 'aspectjweaver', version: versions.aspectjWeaver
     implementation group: 'com.slack.api', name: 'slack-api-client', version: versions.slackApiClient
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: versions.webdrivermanager
-    testImplementation group: 'org.testng', name: 'testng', version: versions.testNg
     implementation group: 'io.github.sukgu', name: 'automation', version: versions.shadowDomAutomation
+    testImplementation "org.wiremock:wiremock:" + versions.wireMock
+    testImplementation 'io.cucumber:cucumber-java:' + versions.cucumber
+    testImplementation group: 'org.testng', name: 'testng', version: versions.testNg
     testImplementation group: 'io.rest-assured', name: 'rest-assured', version: versions.restAssured
     testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: versions.logbackClassic
-
-    testImplementation 'io.cucumber:cucumber-java:' + versions.cucumber
 }
 
 configurations {
@@ -108,5 +109,7 @@ test {
                 dependsOn cleanTest
                 suites 'src/test/resources/xml_runners/main_runner/TestNG-Runner.xml'
             }
+    testLogging.showStandardStreams = true
     systemProperties System.properties
+    maxParallelForks = 1
 }

@@ -62,4 +62,7 @@ public class AbonnementPage extends BasePage<AbonnementPage> {
 
     @FindBy(how = How.ID, using = "page-bedankt-bevestiging")
     public WebElement thankYouMessage;
+
+    @FindBy(how = How.XPATH, using = "//*[starts-with(@id,'TextFieldEmailadres') and contains(@class, 'TextBox-input has-error')]")
+    public WebElement textBoxEmailErrorMessage;
 }

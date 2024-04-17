@@ -12,9 +12,12 @@ public class SelectivesPage extends BasePage<SelectivesPage> {
     }
 
     //Elements
+    @FindBy(how = How.XPATH, using = "//iframe[starts-with(@id,'sp_message_iframe_')]")
+    public WebElement iframeElement;
     @FindBy(how = How.XPATH, using = "//button[contains(@class, 'pg-accept-button')]")
     public WebElement acceptAllCookiesButton;
-
-    @FindBy(xpath = "//*[starts-with(@id,'pexi-tm') and contains(@id,'__secondary-button-top')]")
+    @FindBy(xpath = "//*[contains(@class,'app-header-home__position--desktop')]" +
+            "//a[starts-with(@class,'pexi-tm') and " +
+            "contains(@class,'__secondary-button-top')]")
     public WebElement abonnerenButton;
 }

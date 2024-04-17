@@ -32,11 +32,11 @@ public class SlackLogger extends TestEnvironment implements ITestListener {
 
     private static String color;
     private static String testAttachmentImage;
-    private static final String URL_LINKEDIN = "https://www.linkedin.com/in/kamil-nowocin";
+    private static final String URL_LINKEDIN = "https://www.linkedin.com/";
     //https://hooks.slack.com/services/YOUR_SLACK_TOKEN <- CORRECT SLACK WEB HOOK
     private static final String URL_SLACK_WEB_HOOK = "https://hooks.slack.com/services/";
-    private static final String URL_REPOSITORY = "https://github.com/kamil-nowocin/Test_Automation-automationpractice";
-    private static final String URL_REPOSITORY_IMAGES = "https://raw.githubusercontent.com/kamil-nowocin/Test_Automation-automationpractice/master/src/test/resources/files/images";
+    private static final String URL_REPOSITORY = "https://github.com/";
+    private static final String URL_REPOSITORY_IMAGES = "https://raw.githubusercontent.com/";
 
     private String slackResultDetailsBuilder() {
         List<String> testCaseNames = new ArrayList<>();

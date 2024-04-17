@@ -11,7 +11,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
+import org.testng.collections.Lists;
 
+import java.util.List;
 import java.util.Map;
 
 public class AbonnementSteps extends TestEnvironment {
@@ -72,15 +74,25 @@ public class AbonnementSteps extends TestEnvironment {
             testCommons.customSendKeys(abonnementPage.toevoegingField, formData.get("Toevoeging"));
         }
         testCommons.customSendKeys(abonnementPage.telefoonnummerField, formData.get("Telefoonnummer"));
+
+        // Input the email address
         do{
-            abonnementPage.emailadresField.clear();
-            testCommons.customSendKeys(abonnementPage.emailadresField, faker.internet().emailAddress());
+            abonnementPage.emailadresField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+            abonnementPage.emailadresField.sendKeys(Keys.DELETE);
             abonnementPage.emailadresField.sendKeys(Keys.TAB);
-            Thread.sleep(750);
-        }while(!abonnementPage.emailCheckMark.isDisplayed());
+
+            // Use mocked response for API call
+            performApiCall(); // Mocked API call
+
+            testCommons.customSendKeys(abonnementPage.emailadresField, faker.internet().emailAddress());
+            testCommons.customSendKeys(abonnementPage.ibanField, "");
+            Thread.sleep(1000);
+        }while(testCommons.isElementVisible(abonnementPage.textBoxEmailErrorMessage));
+        // Continue filling the form
         testCommons.customSendKeys(abonnementPage.ibanField, formData.get("IBAN bankrekeningnummer"));
         testCommons.customSendKeys(abonnementPage.wachtwoordField, formData.get("Wachtwoord"));
         testCommons.customSendKeys(abonnementPage.WachtwoordcontroleField, formData.get("Wachtwoordcontrole"));
+
         //ASSERT
         //Checks if the address returned is correct
         SoftAssert softAssert = new SoftAssert();

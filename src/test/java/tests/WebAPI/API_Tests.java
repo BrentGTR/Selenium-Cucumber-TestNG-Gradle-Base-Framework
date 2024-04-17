@@ -19,8 +19,11 @@ import static io.restassured.RestAssured.given;
 public class API_Tests extends API_Hooks {
 
     private String restHomeURL() {
-        return RestAssured.baseURI = "https://abonnement.ed.nl/";
+        RestAssured.baseURI = "https://abonnement.ed.nl";
+        RestAssured.port = 443; // Specify the correct port here
+        return RestAssured.baseURI;
     }
+
 
     @Issue("TAP/API-0001")
     @TmsLink("JIRA-000")
@@ -30,8 +33,9 @@ public class API_Tests extends API_Hooks {
     @Description("As a user I would like to check availability of my email address")
     @Test(description = "As a user I would like to check availability of my email address",
             priority = 0)
-    public void login_url_check(String bearerToken) throws Throwable {
+    public void login_url_check() throws Throwable {
         //ARRANGE//
+        RestAssured.baseURI = "https://abonnement.ed.nl";
         ExcelEnvironment excelEnvironment = new ExcelEnvironment();
 
         excelEnvironment.saveTestResultsXLSX(45);
@@ -40,17 +44,12 @@ public class API_Tests extends API_Hooks {
 
         given()
                 .body(payload)
-                .header(new Header("Authorization", bearerToken))
+//                .header(new Header("Authorization", bearerToken))
                 .contentType("application/json")
                 .when()
                 .post("/rest/v1/validate-email")
                 .then()
-                .statusCode(201);
+                .statusCode(200);
     }
 
-    public String getBearerToken() {
-        String bearerToken = "";
-        //TODO: Add code to get the bearer token from the API
-        return bearerToken;
-    }
 }

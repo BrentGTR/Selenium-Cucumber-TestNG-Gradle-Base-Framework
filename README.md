@@ -10,7 +10,7 @@
 # Test automation - http://www.automationpractice.com
 **Design Pattern:** Page Object Model with loadable components<sub><sup>(POC)</sub></sup> & AAA  
 **Following tools were used in this framework:**  
-Java, Selenium, TestNG, Cucumber, REST Assured, Gradle, Travis CI, Allure Reports, Slack API, SeleniumGrid, WebDriverManager, Faker & MockNeat, BrowserStack, GitHub Pages
+Java, Selenium, TestNG, Cucumber, REST Assured, Gradle, Travis CI, Allure Reports, Slack API, SeleniumGrid, WebDriverManager, Faker & MockNeat, BrowserStack, GitHub Pages, and stuff.
   * [About project](#about-project)
   * [Features](#features)
   * [How to run tests](#how-to-run-tests)

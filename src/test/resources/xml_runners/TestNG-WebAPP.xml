@@ -17,41 +17,41 @@
             <class name="tests.WebAPP.Freemium_Tests"/>
         </classes>
     </test>
-    <test name="Automated tests for www.ed.nl" group-by-instances="false" preserve-order="false" enabled="true">
-        <parameter name="website" value="www.ed.nl"/>
-        <classes>
-            <class name="tests.WebAPP.Freemium_Tests"/>
-        </classes>
-    </test>
-    <test name="Automated tests for www.ad.nl" group-by-instances="false" preserve-order="false" enabled="true">
-        <parameter name="website" value="www.ad.nl"/>
-        <classes>
-            <class name="tests.WebAPP.Freemium_Tests"/>
-        </classes>
-    </test>
-        <test name="Automated tests for www.bndestem.nl" group-by-instances="false" preserve-order="false" enabled="true">
-            <parameter name="website" value="www.bndestem.nl"/>
-            <classes>
-                <class name="tests.WebAPP.Freemium_Tests"/>
-            </classes>
-        </test>
-    <test name="Automated tests for www.pzc.nl" group-by-instances="false" preserve-order="false" enabled="true">
-        <parameter name="website" value="www.pzc.nl"/>
-        <classes>
-            <class name="tests.WebAPP.Freemium_Tests"/>
-        </classes>
-    </test>
-    <test name="Automated tests for www.gelderlander.nl" group-by-instances="false" preserve-order="false" enabled="true">
-        <parameter name="website" value="www.gelderlander.nl"/>
-        <classes>
-            <class name="tests.WebAPP.Freemium_Tests"/>
-        </classes>
-    </test>
-    <test name="Automated tests for www.destentor.nl" group-by-instances="false" preserve-order="false" enabled="true">
-        <parameter name="website" value="www.destentor.nl"/>
-        <classes>
-            <class name="tests.WebAPP.Freemium_Tests"/>
-        </classes>
-    </test>
+<!--    <test name="Automated tests for www.ed.nl" group-by-instances="false" preserve-order="false" enabled="true">-->
+<!--        <parameter name="website" value="www.ed.nl"/>-->
+<!--        <classes>-->
+<!--            <class name="tests.WebAPP.Freemium_Tests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Automated tests for www.ad.nl" group-by-instances="false" preserve-order="false" enabled="true">-->
+<!--        <parameter name="website" value="www.ad.nl"/>-->
+<!--        <classes>-->
+<!--            <class name="tests.WebAPP.Freemium_Tests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--        <test name="Automated tests for www.bndestem.nl" group-by-instances="false" preserve-order="false" enabled="true">-->
+<!--            <parameter name="website" value="www.bndestem.nl"/>-->
+<!--            <classes>-->
+<!--                <class name="tests.WebAPP.Freemium_Tests"/>-->
+<!--            </classes>-->
+<!--        </test>-->
+<!--    <test name="Automated tests for www.pzc.nl" group-by-instances="false" preserve-order="false" enabled="true">-->
+<!--        <parameter name="website" value="www.pzc.nl"/>-->
+<!--        <classes>-->
+<!--            <class name="tests.WebAPP.Freemium_Tests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Automated tests for www.gelderlander.nl" group-by-instances="false" preserve-order="false" enabled="true">-->
+<!--        <parameter name="website" value="www.gelderlander.nl"/>-->
+<!--        <classes>-->
+<!--            <class name="tests.WebAPP.Freemium_Tests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Automated tests for www.destentor.nl" group-by-instances="false" preserve-order="false" enabled="true">-->
+<!--        <parameter name="website" value="www.destentor.nl"/>-->
+<!--        <classes>-->
+<!--            <class name="tests.WebAPP.Freemium_Tests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 </suite>

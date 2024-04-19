@@ -21,6 +21,3 @@ jobs:
 
       - name: Run tests
         run: ./gradlew clean test
-
-#      - name: Run TestNG XML suite
-#        run: java -cp .:build/libs/* org.testng.TestNG src/test/resources/xml_runners/TestNG-WebAPI.xml

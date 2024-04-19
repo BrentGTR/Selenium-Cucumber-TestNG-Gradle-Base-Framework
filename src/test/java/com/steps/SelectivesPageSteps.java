@@ -38,7 +38,7 @@ public class SelectivesPageSteps extends TestEnvironment {
         driver.switchTo().defaultContent();
 
         //ASSERT
-        Thread.sleep(2000); //Wait for page to load completely
+        Thread.sleep(5000); //Wait for page to load completely
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(DriverFactory.getDriver().getCurrentUrl(), expectedPageURL, "Current URL doesn't match expected URL");
         softAssert.assertAll();

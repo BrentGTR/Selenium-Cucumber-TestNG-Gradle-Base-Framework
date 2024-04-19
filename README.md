@@ -69,7 +69,7 @@ You can add some environment settings, before you run tests, e.g:
 - Create your own runner :hammer_and_wrench:
 ## TEST RESULTS & TEST LOGS
 ### CI/CD
-After each CI/CD cycle run, tests results will be automatically uploaded to [kamil_nowocin.github.io/Test_Automation](https://kamil-nowocin.github.io/Test_Automation-automationpractice/)
+This is currently configured to run in Github.
 ### Localhost
 After each LOCAL cycle run two types of log information are saved inside repository, together with tests results
 ### TestNG & Cucumber

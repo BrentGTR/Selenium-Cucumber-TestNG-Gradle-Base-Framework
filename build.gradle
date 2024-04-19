@@ -14,7 +14,7 @@ version '1.0-SNAPSHOT'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -53,7 +53,10 @@ dependencies {
     implementation group: 'io.cucumber', name: 'cucumber-java', version: versions.cucumber
     implementation group: 'io.cucumber', name: 'cucumber-testng', version: versions.cucumber
     implementation group: 'io.cucumber', name: 'cucumber-guice', version: versions.cucumberGuice
-    implementation group: 'com.github.javafaker', name: 'javafaker', version: versions.javafaker
+//    implementation group: 'com.github.javafaker', name: 'javafaker', version: versions.javafaker
+    implementation('com.github.javafaker:javafaker:1.0.2') {
+        exclude group: 'org.yaml', module: 'snakeyaml'
+    }
     implementation 'net.andreinc:mockneat:' + versions.mockneat
     implementation group: 'commons-io', name: 'commons-io', version: versions.commonsIO
     implementation group: 'io.qameta.allure', name: 'allure-testng', version: versions.allureTestNg

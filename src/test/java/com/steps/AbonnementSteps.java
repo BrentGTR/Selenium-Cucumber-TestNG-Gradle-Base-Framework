@@ -82,7 +82,7 @@ public class AbonnementSteps extends TestEnvironment {
             abonnementPage.emailadresField.sendKeys(Keys.TAB);
 
             // Use mocked response for API call
-            performApiCall(); // Mocked API call
+//            performApiCall(); // Mocked API call
 
             testCommons.customSendKeys(abonnementPage.emailadresField, faker.internet().emailAddress());
             testCommons.customSendKeys(abonnementPage.ibanField, "");
